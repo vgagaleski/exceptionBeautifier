@@ -1,6 +1,6 @@
 {
   "name": "Exception beautifier",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "A browser extension that will help you beautify the annoying exceptions",
   "permissions": [
     "storage"
