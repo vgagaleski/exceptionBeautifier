@@ -1,0 +1,20 @@
+{
+  "name": "Exception beautifier",
+  "version": "1.0",
+  "description": "A browser extension that will help you beautify the annoying exceptions",
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+      "default_title": "Exception beautifier",
+      "default_icon": "/images/logo_2.png",
+      "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "/images/icon16.png",
+    "48": "/images/icon48.png",
+    "128": "/images/icon128.png" 
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}

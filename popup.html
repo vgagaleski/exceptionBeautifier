@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  </head>
+
+
+  <body>
+    <header>
+      <!-- <img class="logo" src="images/computer-bug.svg" alt="logo">
+      
+        <ul class="nav_links">
+          <li><a href="#">C#</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">Python</a></li>
+        </ul>
+      </nav> -->
+
+      <button id="clearBtn">Clear</button> 
+      <button id="settingsBtn" type="checkbox"> <i class="fas fa-sliders-h"></i> Settings <i class="fas fa-chevron-down"></i></button> 
+
+    </header>
+
+    <form>
+      <div class="innter-form">
+        <div class="wrapper">
+          <input class="input" type="text" autocomplete="off" placeholder="Paste your exception here" id="input">
+        </div>
+    
+        <div class="wrapper">
+          <textarea class="output" type="text" id="output" readonly></textarea>
+        </div>
+      </div>
+    </form>
+  </body>
+
+  <!-- The Modal -->
+  <label id="modal-bg" for="modal" class="modal-bg"></label>
+  <div id="modal-content" class="modal-content">
+    <label id="closeXBtn" for="modal" class="close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </label>
+    <div class="modal-header">
+      <h3>Settings</h3>
+    </div>
+    <hr>
+    <article class="content">
+      <div class="modal-div">
+        <div class="modal-nested-div">
+          <label class="label">
+            <div class="toggle">
+              <input class="toggle-state" id="toggle-checkbox" type="checkbox" name="check" value="check" />
+              <div class="toggle-inner">
+                 <div class="indicator"></div>
+              </div>
+              <div class="active-bg"></div>
+            </div>
+            <div class="label-text">Copy to clipboard</div>
+          </label>
+        </div>
+        <!-- <div class="modal-nested-div">
+          <label class="label">
+            <div class="label-text">Programming language</div>
+          </label>
+
+
+          <div class="select-box">
+            <div class="options-container">
+    
+              <div class="option">
+                <input type="radio" class="radio" id="film" name="category" />
+                <label for="film">C#</label>
+              </div>
+    
+              <div class="option">
+                <input type="radio" class="radio" id="science" name="category" />
+                <label for="science">Java</label>
+              </div>
+            </div>
+    
+            <div class="selected">
+              C#
+            </div>
+          </div>
+        </div> 
+
+
+        </div>-->
+      </div>
+      
+    </article>
+    <footer>
+      <label class="button save" id="saveBtn"  for="modal">Save</label>
+      <label class="button cancel" id="closeBtn" for="modal">Cancel</label>
+    </footer>
+  </div>
+
+</html>
