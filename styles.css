@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
 *, *::before, *::after {
     /* width: max-content; */
 }
@@ -89,10 +88,12 @@ hr {
 
 button { 
     padding: 10px;
-    margin: 15px;
-    background: rgba(0, 136, 161, 1);
+    margin-left: 15px;
+    margin-top: 20px;
+    /* background: rgba(0, 136, 161, 1); */
+    background-color: rgba(51, 103, 214, 1);
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     right: 0;
@@ -101,11 +102,13 @@ button {
 }
 
 button:hover {
-    background-color: rgba(0, 136, 161, 0.8);
+    /* background-color: rgba(0, 136, 161, 0.8); */
+    background-color: rgba(51, 103, 214, 0.8)
 }
 
 button:hover .i {
-    background-color: rgba(0, 136, 161, 0.8);
+    /* background-color: rgba(0, 136, 161, 0.8); */
+    background-color: rgba(51, 103, 214, 0.8)
 }
 
 form {
@@ -123,20 +126,21 @@ form .inner-form {
 }
   
 .wrapper {    
-    background: rgba(0, 136, 161, 1);
+    background: rgba(51, 103, 214, 1);
     max-width: 600px;
-    padding: 4px;
+    padding: 2px;
     margin: 10px;
     display: flex;
     justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
 }
 
 .wrapper .input {
     width: 575px;
     padding: 15px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: normal;
 }
 
@@ -145,7 +149,7 @@ form .inner-form {
     min-height: 400px;
     padding: 15px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: normal;
 }
 
@@ -265,7 +269,7 @@ form .inner-form {
     position: relative;
     padding: 10px;
     margin-left: 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 14px;
     font-weight: 400;
     color: white;
@@ -291,7 +295,7 @@ form .inner-form {
 }
 
 .modal-content footer .button.save {
-    background: rgba(0, 136, 161, 1);
+    background: rgba(51, 103, 214, 1);
     box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
 }
 
@@ -354,7 +358,7 @@ form .inner-form {
     left: 0;
     height: 100%;
     width: 200%;
-    background: rgba(0, 136, 161, 1);
+    background: rgba(51, 103, 214, 1);
     transform: translate3d(-100%, 0, 0);
     transition: transform 0.05s linear 0.17s;
   }
@@ -390,7 +394,7 @@ form .inner-form {
   }
   
   .select-box .options-container {
-    background: rgba(0, 136, 161, 1);
+    background: rgba(51, 103, 214, 1);
     color: #f5f6fa;
     max-height: 0;
     width: 100%;
@@ -403,7 +407,7 @@ form .inner-form {
   }
   
   .selected {
-    background: rgba(0, 136, 161, 1);
+    background: rgba(51, 103, 214, 1);
     border-radius: 8px;
     margin-bottom: 8px;
     color: #f5f6fa;
@@ -439,12 +443,12 @@ form .inner-form {
   
   .select-box .options-container::-webkit-scrollbar {
     width: 8px;
-    background: rgba(0, 136, 161, 0.8);
+    background: rgba(51, 103, 214, 0.8);
     border-radius: 0 8px 8px 0;
   }
   
   .select-box .options-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 136, 161, 0.8);
+    background: rgba(51, 103, 214, 0.8);
     border-radius: 0 8px 8px 0;
   }
   
@@ -455,7 +459,7 @@ form .inner-form {
   }
   
   .select-box .option:hover {
-    background: rgba(0, 136, 161, 0.8);
+    background: rgba(51, 103, 214, 0.8);
   }
   
   .select-box label {
