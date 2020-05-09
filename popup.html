@@ -1,11 +1,10 @@
-<html>
+<html lang="en" data-theme="dark">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="popup.js"></script>
+    
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
   </head>
-
 
   <body>
     <header>
@@ -19,7 +18,7 @@
       </nav> -->
 
       <button id="clearBtn">Clear</button> 
-      <button id="settingsBtn" type="checkbox"> <i class="fas fa-sliders-h"></i> Settings <i class="fas fa-chevron-down"></i></button> 
+      <button id="settingsBtn" type="checkbox"> <i class="fas fa-sliders-h" aria-hidden="true"></i> Settings <i class="fas fa-chevron-down" aria-hidden="true"></i></button> 
 
     </header>
 
@@ -34,6 +33,8 @@
         </div>
       </div>
     </form>
+
+    <script src="popup.js"></script>
   </body>
 
   <!-- The Modal -->
@@ -49,16 +50,35 @@
     <article class="content">
       <div class="modal-div">
         <div class="modal-nested-div">
-          <label class="label">
-            <div class="toggle">
-              <input class="toggle-state" id="toggle-checkbox" type="checkbox" name="check" value="check" />
-              <div class="toggle-inner">
-                 <div class="indicator"></div>
+          <div class="modal-nested-row">
+            <label class="label">
+              <div class="toggle">
+                <input class="toggle-state" id="toggleCopyToClipboard" type="checkbox" name="check" checked="checked"/>
+                <div class="toggle-inner">
+                   <div class="indicator"></div>
+                </div>
+                <div class="active-bg"></div>
               </div>
-              <div class="active-bg"></div>
-            </div>
-            <div class="label-text">Copy to clipboard</div>
-          </label>
+              <div class="label-text">Copy to clipboard</div>
+            </label>
+          </div>
+
+          <div class="modal-nested-row">
+            <label class="label">
+              <div class="toggle">
+                <input class="toggle-state" id="toggleDarkTheme" type="checkbox" name="check" checked="checked"/>
+                <div class="toggle-inner">
+                   <div class="indicator"></div>
+                </div>
+                <div class="active-bg"></div>
+              </div>
+              <div class="label-text">Dark theme</div>
+            </label>
+          </div>
+
+        </div>
+        <div>
+          
         </div>
         <!-- <div class="modal-nested-div">
           <label class="label">

@@ -1,10 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-*, *::before, *::after {
-    /* width: max-content; */
+html {
+    --bg: rgb(255, 255, 255);
+    --bg-panel: rgb(255, 255, 255);
+    --color-headings: #0077FF;
+    --color-text: #000000;
+    --box-shadow: box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
 }
 
-li, a, button {
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+    transition: all 200ms !important;
+    transition-delay: 0 !important;
+}
+
+html[data-theme='dark'] {
+    --bg: #333333;
+    --bg-panel: #3b3b3b;
+    --color-headings: #3694FF;
+    --color-text: #f7f7f7;
+    --box-shadow: box-shadow: 3px 3px 5px -1px rgba(34, 34, 34, 0.8);
+}
+
+li,
+a,
+button {
     font-weight: 500;
     font-size: 13px;
     color: #edf0f1;
@@ -16,21 +38,17 @@ i {
     padding: 0 10px;
 }
 
-.i {
-    background-color: inherit;
-}
-
 header {
     justify-content: flex-end;
     align-items: flex-end;
     margin: 10px;
     display: block;
     /* float: right; */
-} 
+}
 
 body {
     /* border: 5px solid red; */
-    background-color: #ffffff;
+    background-color: var(--bg);
     display: block;
 }
 
@@ -86,7 +104,7 @@ hr {
     padding-bottom: 10px;
 }
 
-button { 
+button {
     padding: 10px;
     margin-left: 15px;
     margin-top: 20px;
@@ -97,7 +115,7 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     right: 0;
-    box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
+    box-shadow: var(--box-shadow);
     outline: none;
 }
 
@@ -118,14 +136,14 @@ form {
     /*background: rgba(245, 245, 245, 0.247);
       box-shadow: 3px 3px 5px -1px rgba(233, 233, 233, 0.8); */
 }
-  
+
 form .inner-form {
     width: 100%;
     box-sizing: border-box;
     display: inline-block;
 }
-  
-.wrapper {    
+
+.wrapper {
     background: rgba(51, 103, 214, 1);
     max-width: 600px;
     padding: 2px;
@@ -133,7 +151,7 @@ form .inner-form {
     display: flex;
     justify-content: space-between;
     border-radius: 4px;
-    box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
+    box-shadow: var(--box-shadow);
 }
 
 .wrapper .input {
@@ -142,6 +160,9 @@ form .inner-form {
     border: none;
     border-radius: 4px;
     font-weight: normal;
+    background: var(--bg-panel);
+    color: var(--color-text);
+    font-family: "Roboto", sans-serif;
 }
 
 .wrapper .output {
@@ -151,6 +172,9 @@ form .inner-form {
     border: none;
     border-radius: 4px;
     font-weight: normal;
+    background: var(--bg-panel);
+    color: var(--color-text);
+    font-family: "Roboto", sans-serif;
 }
 
 .modal-btn {
@@ -166,12 +190,12 @@ form .inner-form {
     text-align: center;
     line-height: 2.75;
     transition: box-shadow 250ms ease;
-  }
+}
 
 .modal-btn:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-  
+
 .modal-bg {
     position: absolute;
     top: 0;
@@ -183,7 +207,7 @@ form .inner-form {
     visibility: hidden;
     transition: background-color 250ms linear;
 }
-  
+
 .modal-content {
     position: absolute;
     left: 50%;
@@ -195,14 +219,14 @@ form .inner-form {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    transition: transform 250ms ease;
+    /* transition: transform 250ms ease; */
     visibility: hidden;
     z-index: 20;
+    background: var(--bg-panel)
 }
 
 .modal-div {
     display: flex;
-    padding: 20px 0px;
 }
 
 .modal-toggle-text {
@@ -220,6 +244,10 @@ form .inner-form {
     position: relative;
 }
 
+.modal-nested-row {
+    margin: 10px 0px;
+}
+
 .modal-content .close {
     position: relative;
     float: right;
@@ -227,6 +255,7 @@ form .inner-form {
     transition: transform 500ms ease;
     z-index: 11;
     cursor: pointer;
+    color: var(--color-text);
 }
 
 .modal-content .close:hover {
@@ -244,6 +273,7 @@ form .inner-form {
     margin: 0 0 10px;
     padding: 0;
     font-size: 22px;
+    color: var(--color-text);
 }
 
 .modal-content article {
@@ -286,7 +316,8 @@ form .inner-form {
     width: 0;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.2);
-    transition: width 250ms ease;
+    /* transition: width 250ms ease; */
+    transition: all 0.3s ease 0s;
     z-index: 0;
 }
 
@@ -296,7 +327,7 @@ form .inner-form {
 
 .modal-content footer .button.save {
     background: rgba(51, 103, 214, 1);
-    box-shadow: 3px 3px 5px -1px rgba(224, 223, 223, 0.8);
+    box-shadow: var(--box-shadow);
 }
 
 .modal-content footer .button.cancel {
@@ -306,32 +337,33 @@ form .inner-form {
 
 .modal-bg.open {
     visibility: visible;
-    opacity: 0.7;  
+    opacity: 0.7;
     background-color: black;
-    transition: background-color 250ms linear;
+    transition: background-color 150ms linear;
 }
 
 .modal-content.open {
     visibility: visible;
     transition: transform 150ms ease;
-    z-index: 111; 
-    transform: translate(-15%, -20%);
+    z-index: 111;
+    transform: translate(-25%, -30%);
 }
 
 .label {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-  }
-  
-  .label-text {
+}
+
+.label-text {
     margin-left: 8px;
     font-size: 14px;
     text-align: left;
     white-space: nowrap;
-  }
-  
-  .toggle {
+    color: var(--color-text);
+}
+
+.toggle {
     isolation: isolate;
     position: relative;
     height: 16px;
@@ -339,9 +371,9 @@ form .inner-form {
     border-radius: 15px;
     background: #d6d6d6;
     overflow: hidden;
-  }
-  
-  .toggle-inner {
+}
+
+.toggle-inner {
     z-index: 2;
     position: absolute;
     top: 1px;
@@ -350,9 +382,9 @@ form .inner-form {
     width: 28px;
     border-radius: 15px;
     overflow: hidden;
-  }
-  
-  .active-bg {
+}
+
+.active-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -361,39 +393,39 @@ form .inner-form {
     background: rgba(51, 103, 214, 1);
     transform: translate3d(-100%, 0, 0);
     transition: transform 0.05s linear 0.17s;
-  }
-  
-  .toggle-state {
+}
+
+.toggle-state {
     display: none;
-  }
-  
-  .indicator {
+}
+
+.indicator {
     height: 100%;
     width: 200%;
     background: white;
     border-radius: 13px;
     transform: translate3d(-75%, 0, 0);
     transition: transform 0.35s cubic-bezier(0.85, 0.05, 0.18, 1.35);
-  }
-  
-  .toggle-state:checked ~ .active-bg {
-     transform: translate3d(-50%, 0, 0);
-  }
-  
-  .toggle-state:checked ~ .toggle-inner .indicator {
-     transform: translate3d(25%, 0, 0);
-  }
+}
+
+.toggle-state:checked~.active-bg {
+    transform: translate3d(-50%, 0, 0);
+}
+
+.toggle-state:checked~.toggle-inner .indicator {
+    transform: translate3d(25%, 0, 0);
+}
 
 
-/*Styling Selectbox*/
+/*Styling Selectbox
 .select-box {
     display: flex;
     width: 150px;
     flex-direction: column;
     margin: 10px;
-  }
-  
-  .select-box .options-container {
+}
+
+.select-box .options-container {
     background: rgba(51, 103, 214, 1);
     color: #f5f6fa;
     max-height: 0;
@@ -402,70 +434,71 @@ form .inner-form {
     transition: all 0.4s;
     border-radius: 8px;
     overflow: hidden;
-  
+
     order: 1;
-  }
-  
-  .selected {
+}
+
+.selected {
     background: rgba(51, 103, 214, 1);
     border-radius: 8px;
     margin-bottom: 8px;
     color: #f5f6fa;
     position: relative;
     order: 0;
-  }
-  
-  .selected::after {
+}
+
+.selected::after {
     content: "";
     background: url("img/arrow-down.svg");
     background-size: contain;
     background-repeat: no-repeat;
-  
+
     position: absolute;
     height: 100%;
     width: 32px;
     right: 10px;
     top: 5px;
-  
+
     transition: all 0.4s;
-  }
-  
-  .select-box .options-container.active {
+}
+
+.select-box .options-container.active {
     max-height: 240px;
     opacity: 1;
     overflow-y: scroll;
-  }
-  
-  .select-box .options-container.active + .selected::after {
+}
+
+.select-box .options-container.active+.selected::after {
     transform: rotateX(180deg);
     top: -6px;
-  }
-  
-  .select-box .options-container::-webkit-scrollbar {
+}
+
+.select-box .options-container::-webkit-scrollbar {
     width: 8px;
     background: rgba(51, 103, 214, 0.8);
     border-radius: 0 8px 8px 0;
-  }
-  
-  .select-box .options-container::-webkit-scrollbar-thumb {
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
     background: rgba(51, 103, 214, 0.8);
     border-radius: 0 8px 8px 0;
-  }
-  
-  .select-box .option,
-  .selected {
+}
+
+.select-box .option,
+.selected {
     padding: 8px;
     cursor: pointer;
-  }
-  
-  .select-box .option:hover {
+}
+
+.select-box .option:hover {
     background: rgba(51, 103, 214, 0.8);
-  }
-  
-  .select-box label {
+}
+
+.select-box label {
     cursor: pointer;
-  }
-  
-  .select-box .option .radio {
+}
+
+.select-box .option .radio {
     display: none;
-  }
+}
+*/
