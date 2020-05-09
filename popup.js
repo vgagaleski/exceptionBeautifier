@@ -89,14 +89,8 @@ initializeModal = () => {
 
   darkThemeToggle.addEventListener("change", function() {
     if (darkThemeToggle.checked) {
-      chrome.storage.local.set({'darkThemeToggle': true}, function() {
-        console.log('Value is set to ' + true);
-      });
       setTheme(true);
     } else {
-      chrome.storage.local.set({'darkThemeToggle': false}, function() {
-        console.log('Value is set to ' + false);
-      });
       setTheme(false);
     }
   });
