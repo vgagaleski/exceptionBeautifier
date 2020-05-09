@@ -177,25 +177,6 @@ form .inner-form {
     font-family: "Roboto", sans-serif;
 }
 
-.modal-btn {
-    position: relative;
-    display: table-cell;
-    width: 100px;
-    height: 100px;
-    background-color: #2c3e50;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    font-size: 36px;
-    color: white;
-    text-align: center;
-    line-height: 2.75;
-    transition: box-shadow 250ms ease;
-}
-
-.modal-btn:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
 .modal-bg {
     position: absolute;
     top: 0;
@@ -205,21 +186,19 @@ form .inner-form {
     opacity: 0;
     z-index: 10;
     visibility: hidden;
-    transition: background-color 250ms linear;
+    /* transition: background-color 250ms linear; */
 }
 
 .modal-content {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 35%;
+    top: 25%;
     height: auto;
-    margin-top: -25%;
-    margin-left: -10%;
     padding: 30px;
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    /* transition: transform 250ms ease; */
+    /* transition: transform 250ms ease-in; */
     visibility: hidden;
     z-index: 20;
     background: var(--bg-panel)
@@ -252,7 +231,7 @@ form .inner-form {
     position: relative;
     float: right;
     font-size: 18px;
-    transition: transform 500ms ease;
+    /* transition: transform 250ms ease; */
     z-index: 11;
     cursor: pointer;
     color: var(--color-text);
@@ -317,7 +296,7 @@ form .inner-form {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.2);
     /* transition: width 250ms ease; */
-    transition: all 0.3s ease 0s;
+    /* transition: all 0.3s ease 0s; */
     z-index: 0;
 }
 
@@ -339,14 +318,14 @@ form .inner-form {
     visibility: visible;
     opacity: 0.7;
     background-color: black;
-    transition: background-color 150ms linear;
+    /* transition: background-color 150ms linear; */
 }
 
 .modal-content.open {
     visibility: visible;
-    transition: transform 150ms ease;
+    /* transition: transform 150ms ease; */
     z-index: 111;
-    transform: translate(-25%, -30%);
+    /* transform: translate(-25%, -30%); */
 }
 
 .label {
