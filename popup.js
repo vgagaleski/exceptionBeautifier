@@ -1,6 +1,6 @@
 /**
  * 
- * System.Exception: Test outer exceptio ---> System.Exception: Hello Exceptionat TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 29    at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 36     --- End of inner exception stack trace ---     at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 41     at TestExceptionGenerator.Spike.<GenericExceptionWithInnerException>b__1() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 21     at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 56 
+ * System.Exception: Test outer exception ---> System.Exception: Hello Exceptionat TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 29    at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 36     --- End of inner exception stack trace ---     at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 41     at TestExceptionGenerator.Spike.<GenericExceptionWithInnerException>b__1() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 21     at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 56 
  * 
  * System.Exception: Test outer exception ---> System.Exception: Hello Exception!
    at TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 29
@@ -12,20 +12,27 @@
  *
  */
 
-document.addEventListener("load", () => { 
-  console.log("load...")
-});
-
-
 document.addEventListener("DOMContentLoaded", () => { 
   console.log("DOMContentLoaded...")
+
   initializeTheme();
-  initializeSaveToClipboard();
+  initializeCopyToClipboard();
 
   let inputBox = document.getElementById('input');
   let outputBox = document.getElementById('output');
   let clearBtn = document.getElementById('clearBtn');
   let settingsBtn = document.getElementById('settingsBtn');
+
+  let saveButton = document.getElementById('saveBtn');
+  let closeButton = document.getElementById('closeBtn');
+  let closeXButton = document.getElementById('closeXBtn');
+  let darkThemeToggle = document.getElementById('toggleDarkTheme');
+  let copyToClipboardToggle = document.getElementById('toggleCopyToClipboard');
+
+  let modalContent = document.getElementById('modal-content');
+  let modalBackground = document.getElementById('modal-bg');
+
+  let themeToggle;
 
   inputBox.addEventListener('paste', (event) => {
 
@@ -33,10 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
     inputBox.value = paste;
 
     outputBox.value = formatStackTrace(paste);
-    if (isSaveToClipboardToggled()) {
-      copyToClipboard();
-    }
-
+    isCopyToClipboardToggled().then(isToggled => {
+      if (isToggled) {
+        copyToClipboard();
+      }
+    })  
   });
 
   inputBox.addEventListener('keydown', (event) => {
@@ -45,9 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       outputBox.value = formatStackTrace(inputBox.value);
-      if (isSaveToClipboardToggled()) {
-        copyToClipboard();
-      }
+      isCopyToClipboardToggled().then(isToggled => {
+        if (isToggled) {
+          copyToClipboard();
+        }
+      })
     }
   });
 
@@ -60,43 +70,18 @@ document.addEventListener("DOMContentLoaded", () => {
     openModal();
   })
 
-});
-
-openModal = () => {
-  var modalContent = document.getElementById('modal-content');
-  var modalBackground = document.getElementById('modal-bg');
-
-  initializeModal();
-
-  modalContent.classList.add('open');
-  modalBackground.classList.add('open');
-}
-
-// Modal is initialized as many times as we click settings btn
-initializeModal = () => {
-  
-  var saveButton = document.getElementById('saveBtn');
-  var closeButton = document.getElementById('closeBtn');
-  var closeXButton = document.getElementById('closeXBtn');
-  var copyToClipboardToggle = document.getElementById('toggleCopyToClipboard');
-  var darkThemeToggle = document.getElementById('toggleDarkTheme');
-
-  var modalContent = document.getElementById('modal-content');
-  var modalBackground = document.getElementById('modal-bg');
-  
-  initializeSaveToClipboardToggle();
-  initializeDarkThemeToggle();
-
   darkThemeToggle.addEventListener("change", function() {
     if (darkThemeToggle.checked) {
       setTheme(true);
+      themeToggle = true;
     } else {
       setTheme(false);
+      themeToggle = false;
     }
   });
 
   saveButton.addEventListener("click", function() {
-
+    
     if (copyToClipboardToggle.checked) {
       chrome.storage.local.set({'copyToClipboardToggle': true}, function() {
         console.log('Value is set to ' + true);
@@ -106,7 +91,7 @@ initializeModal = () => {
         console.log('Value is set to ' + false);
       });
     }
-
+  
     if (darkThemeToggle.checked) {
       chrome.storage.local.set({'darkThemeToggle': true}, function() {
         console.log('Value is set to ' + true);
@@ -122,17 +107,41 @@ initializeModal = () => {
   });
 
   closeButton.addEventListener("click", function() {
+    
+    // Revert theme change if done but not saved
+    if (themeToggle != undefined) {
+      setTheme(!themeToggle);
+    }
+
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
   });
 
   closeXButton.addEventListener("click", function() {
+    
+    // Revert theme change if done but not saved
+    if (themeToggle != undefined) {
+      setTheme(!themeToggle);
+    }
+
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
   });
+
+});
+
+openModal = () => {
+  var modalContent = document.getElementById('modal-content');
+  var modalBackground = document.getElementById('modal-bg');
+
+  initializeCopyToClipboardToggle();
+  initializeDarkThemeToggle();
+
+  modalContent.classList.add('open');
+  modalBackground.classList.add('open');
 }
 
-initializeSaveToClipboard = () => {
+initializeCopyToClipboard = () => {
   chrome.storage.local.get('copyToClipboardToggle', function(result) {
     console.log('copyToClipboardToggle storage value: ', JSON.stringify(result));
     if (Object.keys(result).length === 0) { 
@@ -143,7 +152,7 @@ initializeSaveToClipboard = () => {
   });
 }
 
-initializeSaveToClipboardToggle = () => {
+initializeCopyToClipboardToggle = () => {
   var toggle = document.querySelector("#toggleCopyToClipboard");
   chrome.storage.local.get('copyToClipboardToggle', function(result) {
     console.log('toggleCopyToClipboard storage value: ', JSON.stringify(result));
@@ -165,17 +174,15 @@ initializeSaveToClipboardToggle = () => {
   });
 }
 
-isSaveToClipboardToggled = () => {
-  var toggle = document.querySelector("#toggleCopyToClipboard");
-  if (toggle.checked) {
-    console.log("toggleCopyToClipboard checked");
-    return true;
-  } else {
-    console.log("toggleCopyToClipboard un-checked")
-    return false;
-  }
+isCopyToClipboardToggled = () => {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get('copyToClipboardToggle', function(result) {
+      console.log('isCopyToClipboardToggled storage value: ', JSON.stringify(result));
+      resolve(result.copyToClipboardToggle);
+    });
+  });
 }
-
+  
 initializeTheme = () => {
   chrome.storage.local.get('darkThemeToggle', function(result) {
     console.log('darkThemeToggle storage value: ', JSON.stringify(result));
@@ -183,7 +190,7 @@ initializeTheme = () => {
       chrome.storage.local.set({'darkThemeToggle': false}, function() {
         console.log('darkThemeToggle is set to ' + false);
       });
-      // setTheme(false);
+      setTheme(false);
     } else {
       setTheme(result.darkThemeToggle);
     }
@@ -212,17 +219,6 @@ initializeDarkThemeToggle = () => {
   });
 }
 
-isDarkThemeToggled = () => {
-  var darkThemeToggle = document.querySelector("#toggleDarkTheme");
-  if (darkThemeToggle.checked) {
-    console.log("toggleDarkTheme checked");
-    return true;
-  } else {
-    console.log("toggleDarkTheme un-checked")
-    return false;
-  }
-}
-
 setTheme = (theme) => {
   if (theme) {
     setThemeTransition();
@@ -237,7 +233,7 @@ setThemeTransition = () => {
   document.documentElement.classList.add('transition');
   window.setTimeout(() => {
     document.documentElement.classList.remove('transition');
-  }, 1000);
+  }, 300);
 }
 
 copyToClipboard = () => {
@@ -245,8 +241,6 @@ copyToClipboard = () => {
   copyText.select();
   copyText.setSelectionRange(0, 99999)
   document.execCommand("copy");
-  console.log("Text coppied to clipboard");
-  // alert("Copied the text: " + copyText.value);
 }
 
 formatStackTrace = (stackTrace) => {
