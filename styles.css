@@ -43,11 +43,9 @@ header {
     align-items: flex-end;
     margin: 10px;
     display: block;
-    /* float: right; */
 }
 
 body {
-    /* border: 5px solid red; */
     background-color: var(--bg);
     display: block;
 }
@@ -108,7 +106,6 @@ button {
     padding: 10px;
     margin-left: 15px;
     margin-top: 20px;
-    /* background: rgba(0, 136, 161, 1); */
     background-color: rgba(51, 103, 214, 1);
     border: none;
     border-radius: 4px;
@@ -120,12 +117,10 @@ button {
 }
 
 button:hover {
-    /* background-color: rgba(0, 136, 161, 0.8); */
     background-color: rgba(51, 103, 214, 0.8)
 }
 
 button:hover .i {
-    /* background-color: rgba(0, 136, 161, 0.8); */
     background-color: rgba(51, 103, 214, 0.8)
 }
 
@@ -133,8 +128,6 @@ form {
     padding: 10px;
     margin: 5px;
     width: 600px;
-    /*background: rgba(245, 245, 245, 0.247);
-      box-shadow: 3px 3px 5px -1px rgba(233, 233, 233, 0.8); */
 }
 
 form .inner-form {
@@ -178,21 +171,6 @@ form .inner-form {
     user-select: unset;   
 }
 
-/* textarea[type="text"]::selection {
-    user-select: none;
-} */
-
-/* textarea[type="text"]::selection,
-textarea::selection {
-  background-color: inherit;
-  color: red;
-}
-textarea[type="text"]::-moz-selection,
-textarea::-moz-selection {
-  background-color: inherit;
-  color: red;
-} */
-
 .modal-bg {
     position: absolute;
     top: 0;
@@ -202,7 +180,6 @@ textarea::-moz-selection {
     opacity: 0;
     z-index: 10;
     visibility: hidden;
-    /* transition: background-color 250ms linear; */
 }
 
 .modal-content {
@@ -214,7 +191,6 @@ textarea::-moz-selection {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    /* transition: transform 250ms ease-in; */
     visibility: hidden;
     z-index: 20;
     background: var(--bg-panel)
@@ -277,7 +253,6 @@ textarea::-moz-selection {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    /* line-height: 1.75; */
 }
 
 .modal-content footer {
@@ -311,8 +286,6 @@ textarea::-moz-selection {
     width: 0;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.2);
-    /* transition: width 250ms ease; */
-    /* transition: all 0.3s ease 0s; */
     z-index: 0;
 }
 
@@ -334,14 +307,11 @@ textarea::-moz-selection {
     visibility: visible;
     opacity: 0.7;
     background-color: black;
-    /* transition: background-color 150ms linear; */
 }
 
 .modal-content.open {
     visibility: visible;
-    /* transition: transform 150ms ease; */
     z-index: 111;
-    /* transform: translate(-25%, -30%); */
 }
 
 .label {
@@ -410,90 +380,3 @@ textarea::-moz-selection {
 .toggle-state:checked~.toggle-inner .indicator {
     transform: translate3d(25%, 0, 0);
 }
-
-
-/*Styling Selectbox
-.select-box {
-    display: flex;
-    width: 150px;
-    flex-direction: column;
-    margin: 10px;
-}
-
-.select-box .options-container {
-    background: rgba(51, 103, 214, 1);
-    color: #f5f6fa;
-    max-height: 0;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.4s;
-    border-radius: 8px;
-    overflow: hidden;
-
-    order: 1;
-}
-
-.selected {
-    background: rgba(51, 103, 214, 1);
-    border-radius: 8px;
-    margin-bottom: 8px;
-    color: #f5f6fa;
-    position: relative;
-    order: 0;
-}
-
-.selected::after {
-    content: "";
-    background: url("img/arrow-down.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    position: absolute;
-    height: 100%;
-    width: 32px;
-    right: 10px;
-    top: 5px;
-
-    transition: all 0.4s;
-}
-
-.select-box .options-container.active {
-    max-height: 240px;
-    opacity: 1;
-    overflow-y: scroll;
-}
-
-.select-box .options-container.active+.selected::after {
-    transform: rotateX(180deg);
-    top: -6px;
-}
-
-.select-box .options-container::-webkit-scrollbar {
-    width: 8px;
-    background: rgba(51, 103, 214, 0.8);
-    border-radius: 0 8px 8px 0;
-}
-
-.select-box .options-container::-webkit-scrollbar-thumb {
-    background: rgba(51, 103, 214, 0.8);
-    border-radius: 0 8px 8px 0;
-}
-
-.select-box .option,
-.selected {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.select-box .option:hover {
-    background: rgba(51, 103, 214, 0.8);
-}
-
-.select-box label {
-    cursor: pointer;
-}
-
-.select-box .option .radio {
-    display: none;
-}
-*/
