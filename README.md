@@ -48,11 +48,13 @@ exceptionBeautifier/
   ├── popup.html
   ├── popup.js
   ├── styles.css
+  ├── demo
+        └── demo.gif
   └── images/
-      ├── icon16.png
-      ├── icon48.png
-      ├── icon128.png
-      └── logo.png
+        ├── icon16.png
+        ├── icon48.png
+        ├── icon128.png
+        └── logo.png
 ```
 
 ## Features <a name="features"></a>
