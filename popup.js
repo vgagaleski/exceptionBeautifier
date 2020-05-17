@@ -1,17 +1,3 @@
-/**
- * 
- * System.Exception: Test outer exception ---> System.Exception: Hello Exceptionat TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 29    at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 36     --- End of inner exception stack trace ---     at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 41     at TestExceptionGenerator.Spike.<GenericExceptionWithInnerException>b__1() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 21     at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 56 
- * 
- * System.Exception: Test outer exception ---> System.Exception: Hello Exception!
-   at TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 29
-   at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 36
-   --- End of inner exception stack trace ---
-   at TestExceptionGenerator.Spike.GetInnerException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 41
-   at TestExceptionGenerator.Spike.<GenericExceptionWithInnerException>b__1() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 21
-   at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 56
- *
- */
-
 document.addEventListener("DOMContentLoaded", () => { 
   console.log("DOMContentLoaded...")
 
@@ -236,7 +222,6 @@ formatStackTrace = (stackTrace) => {
 
   let result = removeNewLines(stackTrace);
 
-  // The list of tokens to find and prepend new lines.
   const replacementTokens = [
     {
       format: /---\s*at/g,
@@ -278,25 +263,3 @@ formatStackTrace = (stackTrace) => {
 removeNewLines = (stackTrace) =>  {
   return stackTrace.replace(/(\r\n|\r|\n)/g, '');
 }
-
-
-// function initializeSelectionComponent() {
-//   const selected = document.querySelector(".selected");
-//   const optionsContainer = document.querySelector(".options-container");
-
-//   const optionsList = document.querySelectorAll(".option");
-
-//   selected.addEventListener("click", () => {
-//     optionsContainer.classList.toggle("active");
-//   });
-
-//   optionsList.forEach(o => {
-//     o.addEventListener("click", () => {
-//       selected.innerHTML = o.querySelector("label").innerHTML;
-//       optionsContainer.classList.remove("active");
-//     });
-//   });
-// }
-
-
-
