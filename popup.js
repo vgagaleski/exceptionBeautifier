@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let settingsBtn = document.getElementById('settingsBtn');
 
   let saveButton = document.getElementById('saveBtn');
-  let cancelButton = document.getElementById('closeBtn');
+  let cancelButton = document.getElementById('cancelBtn');
   let closeXButton = document.getElementById('closeXBtn');
   let darkThemeToggle = document.getElementById('toggleDarkTheme');
   let copyToClipboardToggle = document.getElementById('toggleCopyToClipboard');
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggled) {
       setTheme(!darkThemeToggle.checked);
     }
-    
+
     toggled = false;
 
     modalContent.classList.remove('open');
