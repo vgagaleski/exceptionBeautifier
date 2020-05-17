@@ -90,9 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   cancelButton.addEventListener("click", function() {
-    console.log("Cancel toggle: ", toggle);
+    console.log("Cancel toggle: ", toggled);
+
     if (toggled) {
-      setTheme(!darkThemeToggle.checked);
+      chrome.storage.local.get('darkThemeToggle', function(result) {
+        setTheme(result.darkThemeToggle);
+      });
       toggled = false;
     }
 
@@ -101,11 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   closeXButton.addEventListener("click", function() {
-    console.log("X toggle: ", toggle);
+    console.log("X toggle: ", toggled);
+    
     if (toggled) {
-      setTheme(!darkThemeToggle.checked);
+      chrome.storage.local.get('darkThemeToggle', function(result) {
+        setTheme(result.darkThemeToggle);
+      });
+      toggled = false;
     }
-    toggled = false;
     
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
@@ -114,8 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 openModal = () => {
-  var modalContent = document.getElementById('modal-content');
-  var modalBackground = document.getElementById('modal-bg');
+  let modalContent = document.getElementById('modal-content');
+  let modalBackground = document.getElementById('modal-bg');
 
   initializeCopyToClipboardToggle();
   initializeDarkThemeToggle();
@@ -136,7 +142,7 @@ initializeCopyToClipboard = () => {
 }
 
 initializeCopyToClipboardToggle = () => {
-  var toggle = document.querySelector("#toggleCopyToClipboard");
+  let toggle = document.querySelector("#toggleCopyToClipboard");
   chrome.storage.local.get('copyToClipboardToggle', function(result) {
     console.log('toggleCopyToClipboard storage value: ', JSON.stringify(result));
     if (Object.keys(result).length === 0) {
@@ -181,7 +187,7 @@ initializeTheme = () => {
 }
 
 initializeDarkThemeToggle = () => {
-  var toggle = document.querySelector("#toggleDarkTheme");
+  let toggle = document.querySelector("#toggleDarkTheme");
   chrome.storage.local.get('darkThemeToggle', function(result) {
     console.log('darkThemeToggle storage value: ', JSON.stringify(result));
     if (Object.keys(result).length === 0) { 
@@ -220,7 +226,7 @@ setThemeTransition = () => {
 }
 
 copyToClipboard = () => {
-  var copyText = document.querySelector("#output");
+  let copyText = document.querySelector("#output");
   copyText.select();
   copyText.setSelectionRange(0, 99999)
   document.execCommand("copy");
