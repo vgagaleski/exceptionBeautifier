@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let settingsBtn = document.getElementById('settingsBtn');
 
   let saveButton = document.getElementById('saveBtn');
-  let closeButton = document.getElementById('closeBtn');
+  let cancelButton = document.getElementById('closeBtn');
   let closeXButton = document.getElementById('closeXBtn');
   let darkThemeToggle = document.getElementById('toggleDarkTheme');
   let copyToClipboardToggle = document.getElementById('toggleCopyToClipboard');
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let modalContent = document.getElementById('modal-content');
   let modalBackground = document.getElementById('modal-bg');
 
-  let themeToggle;
+  let toggled = false;
 
   inputBox.addEventListener('paste', (event) => {
 
@@ -71,47 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   darkThemeToggle.addEventListener("change", function() {
-    if (darkThemeToggle.checked) {
-      setTheme(true);
-      themeToggle = true;
-    } else {
-      setTheme(false);
-      themeToggle = false;
-    }
+    toggled = true;
+    setTheme(darkThemeToggle.checked);
   });
 
   saveButton.addEventListener("click", function() {
-    
-    if (copyToClipboardToggle.checked) {
-      chrome.storage.local.set({'copyToClipboardToggle': true}, function() {
-        console.log('Value is set to ' + true);
-      });
-    } else {
-      chrome.storage.local.set({'copyToClipboardToggle': false}, function() {
-        console.log('Value is set to ' + false);
-      });
-    }
-  
-    if (darkThemeToggle.checked) {
-      chrome.storage.local.set({'darkThemeToggle': true}, function() {
-        console.log('Value is set to ' + true);
-      });
-    } else {
-      chrome.storage.local.set({'darkThemeToggle': false}, function() {
-        console.log('Value is set to ' + false);
-      });
-    }
+
+    chrome.storage.local.set({'copyToClipboardToggle': copyToClipboardToggle.checked}, function() {
+      console.log('Value is set to ' + copyToClipboardToggle.checked);
+    });
+
+    chrome.storage.local.set({'darkThemeToggle': darkThemeToggle.checked}, function() {
+      console.log('Value is set to ' + darkThemeToggle.checked);
+    });
 
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
   });
 
-  closeButton.addEventListener("click", function() {
-    
-    // Revert theme change if done but not saved
-    if (themeToggle != undefined) {
-      setTheme(!themeToggle);
+  cancelButton.addEventListener("click", function() {
+
+    if (toggled) {
+      setTheme(!darkThemeToggle.checked);
     }
+    
+    toggled = false;
 
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
@@ -119,11 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeXButton.addEventListener("click", function() {
     
-    // Revert theme change if done but not saved
-    if (themeToggle != undefined) {
-      setTheme(!themeToggle);
+    if (toggled) {
+      setTheme(!darkThemeToggle.checked);
     }
 
+    toggled = false;
+    
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
   });
