@@ -90,23 +90,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   cancelButton.addEventListener("click", function() {
-
+    console.log("Cancel toggle: ", toggle);
     if (toggled) {
       setTheme(!darkThemeToggle.checked);
+      toggled = false;
     }
-
-    toggled = false;
 
     modalContent.classList.remove('open');
     modalBackground.classList.remove('open');
   });
 
   closeXButton.addEventListener("click", function() {
-    
+    console.log("X toggle: ", toggle);
     if (toggled) {
       setTheme(!darkThemeToggle.checked);
     }
-
     toggled = false;
     
     modalContent.classList.remove('open');
