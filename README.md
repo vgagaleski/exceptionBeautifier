@@ -79,6 +79,19 @@ In order to enable dark mode the user should toggle the toggle to enabled state 
 ## Demo <a name="demo"></a>
 ![Demo](https://github.com/vgagaleski/exceptionBeautifier/blob/master/demo/demo.gif)
 
+Example exception: 
+
+```
+// Unstructured:
+System.Exception: Hello Exception!   at TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 22   at TestExceptionGenerator.Spike.b__0() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 13   at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 34
+
+// Structured:
+System.Exception: Hello Exception!
+    at TestExceptionGenerator.Spike.GetException() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 22
+    at TestExceptionGenerator.Spike.b__0() in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 13
+    at TestExceptionGenerator.Extensions.GetExceptionString(Action action) in c:\Code\personal\DotNetExceptionMessageFormatter\TestExceptionGenerator\Spike.cs:line 34
+```
+
 ## Bugs and feature requests <a name="bugsandfeaturerequests"></a>
 Have you found any bug? Or you maybe have an interesting feautre request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
 
