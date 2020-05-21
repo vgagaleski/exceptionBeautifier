@@ -1,7 +1,7 @@
 
 <p align="center">
   
-  <a href="https://getbootstrap.com/">
+  <a>
     <img src="https://github.com/vgagaleski/exceptionBeautifier/blob/master/images/logo_2.png" alt="exceptionBeautifier logo" width="72" height="72">
   </a>
 </p>
