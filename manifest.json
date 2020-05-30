@@ -1,7 +1,7 @@
 {
   "name": "Exception beautifier",
   "version": "1.0.0",
-  "description": "A browser extension that will help you beautify the stack-trace of the annoying exceptions (C# & .NET). \n The purpose of the extension is to provide fast access for developers and especially testers to place in which they can drop a non structured string stack-trace and get a structured output. The visibility that the exceptionBeautifier provides enables fast recognition of the stack-trace and analyzing the issue straight from the actual place of the 'crime' - the browser. The extension has few features making it interesting part of every tester tool-set. The user can automatically get copy of the exception output to clipboard or clear the input fields. One of the cool features also is the dark theme, allowing every user to completely align the extension appearance to their personal preferences",
+  "description": "A browser extension that will help you beautify the stack-trace of the annoying exceptions (C# & .NET).",
   "permissions": [
     "storage"
   ],
