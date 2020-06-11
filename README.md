@@ -10,7 +10,7 @@
 <p align="center">
   A browser extension that will help you beautify the stacktrace of the annoying exceptions. Works with .NET & C#
   <br>
-  <a href="extension_link_comming_soon"><strong>Install extension »</strong></a>
+  <a href="https://chrome.google.com/webstore/detail/exception-beautifier/lnjihceobbbfgbnoghfeeofplkdelion"><strong>Install extension »</strong></a>
   <br>
   <br>
   <a href="coming_soon">Report bug</a>
