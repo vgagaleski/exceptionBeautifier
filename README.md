@@ -13,9 +13,9 @@
   <a href="https://chrome.google.com/webstore/detail/exception-beautifier/lnjihceobbbfgbnoghfeeofplkdelion"><strong>Install extension »</strong></a>
   <br>
   <br>
-  <a href="coming_soon">Report bug</a>
+  <a href="https://github.com/vgagaleski/exceptionBeautifier/issues">Report bug</a>
   ·
-  <a href="coming_soon">Request feature</a>
+  <a href="https://github.com/vgagaleski/exceptionBeautifier/issues">Request feature</a>
 </p>
 
 ## Table of contents
