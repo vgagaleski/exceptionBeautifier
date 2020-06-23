@@ -27,7 +27,7 @@
 6. [Thanks](#thanks)
 
 ## Quick start <a name="quickstart"></a>
-The extension can be downloaded on the official link: _coming soon ..._
+The extension can be downloaded on the official link: https://chrome.google.com/webstore/detail/exception-beautifier/lnjihceobbbfgbnoghfeeofplkdelion
 
 However, if you want to use the code provided in this repository you should follow the following steps in order to make it work in your Chrome browser:
 
